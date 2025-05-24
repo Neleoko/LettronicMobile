@@ -8,9 +8,9 @@ export function useAPI() {
 
     const fetchMailNotif = async () => {
         try {
-            const response = await axios.get('http://172.20.48.1:5109/api/Mail/GetMails');
-            //console.log("API response:", response); // Log the response
+            console.log("Fetching mail notifications...");
 
+            const response = await axios.get('http://192.168.245.217:5109/api/Mail/GetMails');
             // Vérifiez la structure de la réponse
             if (response.data && Array.isArray(response.data)) {
                 // Séparez les données
@@ -34,8 +34,9 @@ export function useAPI() {
     }
 
     const sendMailNotif = async (eventDate: Date) => {
+        console.log("test")
         try {
-                const response = await axios.post('http://10.0.2.2:5109/api/Mail/InsertMail', {
+                const response = await axios.post('http://192.168.245.217:5109/api/Mail/InsertMail', {
                     eventTime: eventDate.toISOString(),
                     image: null,
                     message: "Vous avez un nouveau courrier qui vous attend!"

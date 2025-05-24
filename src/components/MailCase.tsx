@@ -18,8 +18,13 @@ export const MailCase = ({ handlePress, event}: MailCaseProps) => {
         >
 
             <View style={styles.textContainer}>
-                <Text style={styles.text}>ID: {event.eventId}</Text>
-                <Text style={styles.text}>Event Time: {event.eventTime}</Text>
+                <Text style={styles.text}>Event Time: {new Date(event.eventTime).toLocaleString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                })}</Text>
                 <Text style={styles.text}>Message: {event.message}</Text>
             </View>
             <Image
